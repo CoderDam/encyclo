@@ -181,6 +181,16 @@ main .post-ext-links a::after {
   color: #dae2f7;
 }
 
+/*****************************/
+/*          ALERTES          */
+/*****************************/
+.alert {
+  left: 1em;
+  opacity: .9;
+  position: absolute;
+  top: 1em;
+  z-index: 20;
+}
 
 /*****************************/
 /*            RWD            */
