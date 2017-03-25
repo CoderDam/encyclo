@@ -9,6 +9,7 @@
         <title>Encyclo</title>
         <!-- <link rel="stylesheet" href="css/reset.css"> -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/jquery-ui.min.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -25,7 +26,13 @@
             <!-- SEARCH -->
             <div class="input-group search-form">
                 <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
-                <input type="text" class="form-control" placeholder="Concept (POO, Ajax...), outil (Git, Composer...), techno (jQuery...) etc." aria-describedby="basic-addon1">
+                <input
+                    type="text"
+                    class="form-control search-field"
+                    name="search"
+                    placeholder="Concept (POO, Ajax...), outil (Git, Composer...), techno (jQuery...) etc."
+                    aria-describedby="basic-addon1"
+                />
             </div>
         </header>
 
@@ -117,6 +124,7 @@
 
         <!-- SOIT en DL local -->
         <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/app.js"></script>
     </body>
