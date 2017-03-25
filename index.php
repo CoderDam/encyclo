@@ -1,2 +1,6 @@
 <?php
-require_once("templates/home.php");
+require_once('inc/functions.php');
+
+
+// templates
+include("templates/home.php");

@@ -5,6 +5,7 @@
 body {
   background-color: #31343F;
   color: #dae2f7;
+  /*max-width: 100vw;*/
 }
 
 /*****************************/
@@ -52,19 +53,31 @@ main .post-core > p {
   text-align: justify;
   /*font-size: 1.1em;*/
 }
+
+/* LINKS */
+main .post-links a:hover,
+main .post-links a:focus {
+  text-decoration: none;
+}
 main .post-tags a::before {
   content: "#";
   font-weight: bold;
 }
-main .post-tags a:hover {
-  text-decoration: none;
+main .post-ext-title {
+  font-weight: bold;
+}
+main .post-ext-links li {
+  list-style: none;
+}
+main .post-ext-links a::after {
+  /*content: "";*/
 }
 
 /*****************************/
 /*        FORMULAIRE         */
 /*****************************/
 #add-block {
-  background: pink;
+  background: #dae2f7;
   border-top-right-radius: 2em;
   max-width: 93vw;
   padding: 1em;
@@ -91,7 +104,7 @@ main .post-tags a:hover {
   transform: rotate(-180deg);
 }
 #add-cross {
-  background: turquoise;
+  background: #337ab7;
   border-radius: 100%;
   height: 2.5em;
   position: fixed;
@@ -102,7 +115,7 @@ main .post-tags a:hover {
 }
 #add-cross::before {
   content: '+';
-  color: pink;
+  color: #dae2f7;
   display: block;
   font-size: 2.5em;
   font-weight: bolder;
@@ -117,11 +130,61 @@ main .post-tags a:hover {
   flex-direction: column;
   justify-content: space-between;
 
+  font-family: 'Inconsolata', sans-serif;
+  max-height: 93vh;
   padding-top: 3.5em;
-  width: 300px;
+  /*width: 20em;*/
+}
+#add-form > input,
+#add-form > textarea {
+  border: 0;
+  border-top-right-radius: 1em;
+  background: #31343F;
+  padding: .5em 1em;
+  margin-bottom: 1em;
+}
+#add-form > textarea {
+  height: 20em;
+}
+#add-form .captcha {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  color: #31343F;
+  height: 30px;
+  margin-bottom: 1em;
+  max-width: 23.8em;
+}
+#add-form .captcha input {
+  height: 100%;
+  padding: .1em 2.43em;
+}
+#add-form > button {
+  background: #337ab7;
+  border: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  letter-spacing: .15em;
+  padding: 1em 1.5em;
+  text-transform: uppercase;
+}
+#add-form button:hover {
+  background: #23527c;
+}
+#confirm .modal-content {
+  background: #dae2f7;
+  color: #31343F;
+}
+#confirm .modal-content input {
+  background: #31343F;
+  color: #dae2f7;
 }
 
 
+/*****************************/
+/*            RWD            */
+/*****************************/
 /* Mobile + */
 @media (min-width: 400px) {
 }
