@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700');
+
+/* Mobile First CSS */
+
+body {
+  background-color: #31343F;
+  color: #dae2f7;
+}
+
+/*****************************/
+/*          HEADER           */
+/*****************************/
+header, main {
+  font-family: 'Inconsolata', sans-serif;
+  font-size: 1.2em;
+}
+#page-title {
+  text-align: center;
+  font-weight: bold;
+}
+#page-title span {
+  display: inline-block;
+}
+#page-title span::first-letter {
+  font-size: 2.1em;
+}
+.search-form input,
+.search-form span {
+  background: #dae2f7;
+  color: #31343F;
+}
+
+/*****************************/
+/*       MAIN (POST)         */
+/*****************************/
+main {
+  margin-top: 1em;
+}
+main .post-title {
+  font-weight: bold;
+  /*margin-bottom: 1em;*/
+}
+main .post-title::before {
+  content: "{ ";
+}
+main .post-title::after {
+  content: " }";
+}
+main .post-core > p {
+  margin-top: 1em;
+  text-indent: 3em;
+  text-align: justify;
+  /*font-size: 1.1em;*/
+}
+main .post-tags a::before {
+  content: "#";
+  font-weight: bold;
+}
+main .post-tags a:hover {
+  text-decoration: none;
+}
+
+/*****************************/
+/*        FORMULAIRE         */
+/*****************************/
+#add-block {
+  background: pink;
+  border-top-right-radius: 2em;
+  max-width: 93vw;
+  padding: 1em;
+  position: absolute;
+  right: .5em;
+  top: .5em;
+  transition: .3s; /*opacity .3s, transform .3s;*/
+  transform: rotate(180deg) translate(-.5em, .5em);
+  transform-origin: calc(100% - 1.75em) 1.75em;
+  opacity: .5;
+  z-index: 10;
+}
+#add-block:hover {
+  transform: rotate(180deg) translate(.5em, -.5em);
+  /*transform-origin: calc(100% - 1.75em) 1.75em;*/
+  opacity: 1;
+}
+#add-block.showing {
+  transform: translate(-.5em, .5em) rotate(360deg) ;
+  /*transform-origin: calc(100% - 1.75em) 1.75em;*/
+  opacity: 1;
+}
+#add-cross.showing {
+  transform: rotate(-180deg);
+}
+#add-cross {
+  background: turquoise;
+  border-radius: 100%;
+  height: 2.5em;
+  position: fixed;
+  right: .5em;
+  top: .5em;
+  transition: transform .3s;
+  width: 2.5em;
+}
+#add-cross::before {
+  content: '+';
+  color: pink;
+  display: block;
+  font-size: 2.5em;
+  font-weight: bolder;
+  height: 100%;
+  position: absolute;
+  top: -.2em;
+  text-align: center;
+  width: 100%;
+}
+#add-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding-top: 3.5em;
+  width: 300px;
+}
+
+
+/* Mobile + */
+@media (min-width: 400px) {
+}
+
+/* Phablets */
+@media (min-width: 550px) {
+}
+
+/* Tablettes */
+@media (min-width: 750px) {
+}
+
+/* Desktop */
+@media (min-width: 1000px) {
+}
+
+/* Desktop HD */
+@media (min-width: 1200px) {
+}
+
+/* Desktop Wide */
+@media (min-width: 1400px) {
+}
