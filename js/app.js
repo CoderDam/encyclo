@@ -2,7 +2,9 @@ var app = {
   init: function() {
     app.addIcons();
 
-    // on écoute le clic sur la croix
+    // app.autocomplete();
+
+    // on écoute le clic sur le plus
     $('#add-cross').on('click',app.showForm);
 
     // on écoute le clic ailleurs
@@ -11,6 +13,11 @@ var app = {
     // on écoute la validation du form
     $('#add-form').on('submit',app.addPost);
 
+    // on écoute le clic sur les tags
+    $('#main').on('click','.tag',app.displayFromTag);
+
+    // on écoute la saisie recherche
+    $('.search-field').on('keyup',app.search);
   },
 
   addIcons: function() {
@@ -18,10 +25,40 @@ var app = {
     var $extLinks = $('.post-ext-links a').append(' ');
     // on leur ajoute une icone
     $('<span>')
-    .addClass('glyphicon glyphicon-share-alt')
-    .attr('aria-hidden','true')
-    .appendTo($extLinks);
+      .addClass('glyphicon glyphicon-share-alt')
+      .attr('aria-hidden','true')
+      .appendTo($extLinks);
   },
+
+  // autocomplete: function() {
+  //   $('.search-field').autocomplete({
+  //     source: function(){
+  //       $.ajax(search.php, {
+  //         dataType : 'json',
+  //         success: function(){
+  //
+  //         }
+  //       })
+  //     },
+  //   });
+  //   // on écoute la recherche
+  //
+  // },
+  //
+  // search: function() {
+  //   var $searchField = $(this);
+  //   var toSearch = {
+  //     search: $searchField.val(),
+  //   };
+  //
+  //   var xhr = $.ajax('search.php', { method: 'GET', data: toSearch });
+  //
+  //   xhr
+  //     .done(function(data){
+  //       $searchField.val(data);
+  //     })
+  //     .fail();
+  // },
 
   defineNotForm: function() {
     // on définit "ailleurs"
@@ -74,7 +111,7 @@ var app = {
           .fadeOut();
       })
       .done(function(data) {
-        $('.alert-success')
+        $('.alert-info')
           .text(data + ' Entrée bien  ajoutée')
           .removeClass('hidden')
           .hide()
@@ -86,6 +123,89 @@ var app = {
         $('#page-title').trigger('click');
       });
   },
+
+  displayFromTag: function(evt) {
+    evt.preventDefault();
+
+    $('.loading')
+      .removeClass('hidden');
+
+    var tag = { tag: $(this).text() };
+
+    var xhr = $.ajax('tag.php', { method: 'GET', data: tag });
+
+    xhr
+      .done(function(data){
+        $('#main')
+          .html(data);
+        app.addIcons();
+      })
+      .always(function(){
+        $('.loading')
+          .addClass('hidden');
+      });
+  },
+
+  search: function(evt) {
+    // console.log(evt.keyCode);
+    if (app.isValid(evt.keyCode)) {
+      $('.loading')
+      .removeClass('hidden');
+
+      var search = { search: $(this).val() };
+
+      var xhr = $.ajax('search.php', { method: 'GET', data: search });
+
+      xhr
+      .done(function(data){
+        $('#main')
+        .html(data);
+        app.addIcons();
+      })
+      .always(function() {
+        $('.loading')
+        .addClass('hidden');
+      });
+    }
+  },
+
+  isValid: function(keyCode) {
+    if (keyCode === 13 ||
+        keyCode === 16 ||
+        keyCode === 17 ||
+        keyCode === 18 ||
+        keyCode === 19 ||
+        keyCode === 20 ||
+        keyCode === 27 || // echap
+        keyCode === 33 ||
+        keyCode === 34 ||
+        keyCode === 35 ||
+        keyCode === 36 ||
+        keyCode === 37 ||
+        keyCode === 38 ||
+        keyCode === 39 ||
+        keyCode === 40 ||
+        keyCode === 45 ||
+        keyCode === 112 ||
+        keyCode === 113 ||
+        keyCode === 114 ||
+        keyCode === 115 ||
+        keyCode === 116 ||
+        keyCode === 117 ||
+        keyCode === 118 ||
+        keyCode === 119 ||
+        keyCode === 120 ||
+        keyCode === 121 ||
+        keyCode === 122 ||
+        keyCode === 123 ||
+        keyCode === 144 ||
+        keyCode === 145 ||
+        keyCode === 225) {
+      return false;
+    }
+    return true;
+  },
+
 };
 
 $(app.init);

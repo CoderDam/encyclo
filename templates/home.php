@@ -37,37 +37,8 @@
         </header>
 
         <!-- MAIN -->
-        <main class="container">
-            <div class="post">
-                <h2 class="post-title">Programmation orientée objets</h2>
-                <div class="post-core">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-                <div class="post-links">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="post-tags ">
-                                <a href="#">test</a>
-                                <a href="#">bidule</a>
-                                <a href="#">machin-chose-de-truc</a>
-                            </h3>
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            <h3 class="post-ext-title">Autres références</h3>
-                            <ul class="post-ext-links">
-                                <li><a href="#">MDN</a></li>
-                                <li><a href="#">La-meilleure-page-de-dev</a></li>
-                                <li><a href="#">Mon site perso</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <main id="main" class="container">
+            <?= $postDisplay ?>
         </main>
 
         <!-- ADD-FORM -->
@@ -76,7 +47,7 @@
             <form id="add-form" method="POST">
                 <input id="form-title" type="text" name="title" placeholder="Nouvel élément">
                 <textarea id="form-core" name="definition" placeholder="Définition"></textarea>
-                <input id="form-tags" type="text" name="tags" placeholder="Tags (un-et-demi,deux,trois,etc)">
+                <input id="form-tags" type="text" name="tags" placeholder="Tags (un-et-demi,deux,3.9,etc)">
                 <input id="form-link1" type="text" name="link1" placeholder="Lien 1 (nom du lien,http://url.com)">
                 <input id="form-link2" type="text" name="link2" placeholder="Lien 2 (nom du lien,http://url.com)">
                 <input id="form-link3" type="text" name="link3" placeholder="Lien 3 (nom du lien,http://url.com)">
@@ -120,9 +91,16 @@
 
         <!-- Alerts -->
         <div class="alert alert-danger hidden" role="alert"></div>
-        <div class="alert alert-success hidden" role="alert"></div>
+        <div class="alert alert-info hidden" role="alert"></div>
 
-        <!-- SOIT en DL local -->
+        <!-- Loading -->
+        <div class="loading hidden">
+          <div class="cog">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <!-- JAVASCRIPT -->
         <script src="js/jquery-3.1.1.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
