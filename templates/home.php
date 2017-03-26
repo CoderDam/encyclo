@@ -52,8 +52,7 @@
                 <input id="form-link2" type="text" name="link2" placeholder="Lien 2 (nom du lien,http://url.com)">
                 <input id="form-link3" type="text" name="link3" placeholder="Lien 3 (nom du lien,http://url.com)">
                 <!-- BUTTON -->
-                <button type="submit" name="sent" data-toggle="modal" >Ajouter l'entrée à la base</button>
-                <!-- data-target="#confirm" -->
+                <button type="button" name="sent" data-toggle="modal" data-target="#confirm">Ajouter l'entrée à la base</button>
             </form>
         </section>
 
@@ -66,12 +65,22 @@
                         <h4 class="modal-title" id="myModalLabel">Confirmation d'ajout</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal confirm-form">
                           <div class="form-group">
                             <label for="password" class="col-sm-3 control-label">Autorisation</label>
                             <div class="col-sm-9" control-label"">
-                                <input type="password" name="password" class="form-control" id="password" placeholder="Autorisation">
+                                <input
+                                    type="password"
+                                    name="password"
+                                    class="form-control"
+                                    id="password"
+                                    placeholder="Autorisation"
+                                />
                             </div>
+                          </div>
+                          <div class="text-right">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                              <button type="submit" class="btn btn-primary">Confirmer</button>
                           </div>
                         </form>
 
@@ -80,10 +89,6 @@
                             <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                             <input type="text" size="6" maxlength="5" name="captcha" value="">
                         </div> -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary">Confirmer</button>
                     </div>
                 </div>
             </div>

@@ -29,10 +29,16 @@ function getPostHTML($post) {
     }
 
     $linksHTML = "";
-    if (isset($post['links'])) {
+    if (isset($post['links']) && !empty($post['links'])) {
+        $linksLiHTML = "";
         foreach($post['links'] as $link) {
-            $linksHTML .= "<li><a href='".$link['url']."'>".$link['name']."</a></li>";
+            $linksLiHTML .= "<li><a href='".$link['url']."'>".$link['name']."</a></li>";
         }
+        $linksHTML = "<div class='col-sm-6 text-right'>
+            <h3 class='post-ext-title'>Liens/références</h3>
+            <ul class='post-ext-links'>".$linksLiHTML."
+            </ul>
+        </div>";
     }
 
     return
@@ -57,12 +63,8 @@ function getPostHTML($post) {
                     <div class='col-sm-6'>
                         <h3 class='post-tags'>".$tagsHTML."
                         </h3>
-                    </div>
-                    <div class='col-sm-6 text-right'>
-                        <h3 class='post-ext-title'>Autres références</h3>
-                        <ul class='post-ext-links'>".$linksHTML."
-                        </ul>
-                    </div>
+                    </div>"
+                    .$linksHTML."
                 </div>
             </div>
         </section>
@@ -70,4 +72,6 @@ function getPostHTML($post) {
         ";
 }
 
-?>
+function passwordIsValid($password) {
+    return trim($password) == 'oBB-2017';
+}

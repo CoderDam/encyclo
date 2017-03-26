@@ -29,7 +29,8 @@ if (isset($_POST)) {
         $tags = explode(',',$_POST['tags']);
         foreach ($tags as $key => $tag) {
             if (trim($tag) != '') {
-                $tags[$key] = substr(str_replace('_','-',str_replace(' ','-',filter_var(trim($tag),FILTER_SANITIZE_STRING))),0,63);
+                $toReplace = ['_',' ',"'"];
+                $tags[$key] = substr(filter_var(str_replace($toReplace,'-',strtolower(trim($tag))),FILTER_SANITIZE_STRING),0,63);
             }
             else {
                 $errors[] = 'Tag(s) invalide(s)';
@@ -102,6 +103,11 @@ if (isset($_POST)) {
 
     if (empty($links)) {
         $links[] = '--';
+    }
+
+    // vérification mot de passe
+    if (empty($_POST['password']) || !passwordIsValid($_POST['password'])) {
+      $errors[] = 'Mot passe manquant ou invalide';
     }
 }
 

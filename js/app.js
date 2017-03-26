@@ -11,13 +11,17 @@ var app = {
     $(app.defineNotForm()).on('click',app.hideForm);
 
     // on écoute la validation du form
-    $('#add-form').on('submit',app.addPost);
+    $('#add-form button').on('click',app.focusModal);
+    $('.confirm-form').on('submit',app.addPost);
 
     // on écoute le clic sur les tags
     $('#main').on('click','.tag',app.displayFromTag);
 
     // on écoute la saisie recherche
     $('.search-field').on('keyup',app.search);
+
+    // on écoute le clic sur le titre
+    $('#page-title').on('click',app.reset);
   },
 
   addIcons: function() {
@@ -68,7 +72,7 @@ var app = {
     notFormSelector += ':not(input)';
     notFormSelector += ':not(textarea)';
     notFormSelector += ':not(button)';
-    notFormSelector += ':not(.captcha)';
+    notFormSelector += ':not(#confirm)';
 
     return notFormSelector;
   },
@@ -86,9 +90,17 @@ var app = {
     }
   },
 
+  focusModal: function() {
+    console.log('focusModal');
+    $('#password').trigger('focus');
+    $('#password').focus();
+  },
+
   addPost: function(evt) {
     // blocage envoi
     evt.preventDefault();
+
+    $('#confirm').modal('hide');
 
     var dataToPost = {
       title: $('#form-title').val(),
@@ -97,7 +109,9 @@ var app = {
       link1: $('#form-link1').val(),
       link2: $('#form-link2').val(),
       link3: $('#form-link3').val(),
+      password: $('#password').val(),
     };
+
     var xhr = $.ajax('add.php', { method: 'POST', data: dataToPost });
 
     xhr
@@ -149,6 +163,7 @@ var app = {
   search: function(evt) {
     // console.log(evt.keyCode);
     if (app.isValid(evt.keyCode)) {
+      // affichage écran de chargement
       $('.loading')
       .removeClass('hidden');
 
@@ -163,6 +178,7 @@ var app = {
         app.addIcons();
       })
       .always(function() {
+        // masquage écran de chargement
         $('.loading')
         .addClass('hidden');
       });
@@ -206,6 +222,27 @@ var app = {
     return true;
   },
 
+  reset: function() {
+    // affichage écran de chargement
+    $('.loading')
+    .removeClass('hidden');
+
+    // vidage input recherche
+    $('.search-field').val('');
+
+    var xhr = $.ajax('search.php');
+    xhr
+    .done(function(data){
+      $('#main')
+      .html(data);
+      app.addIcons();
+    })
+    .always(function() {
+      // masquage écran de chargement
+      $('.loading')
+        .addClass('hidden');
+    });
+  },
 };
 
 $(app.init);

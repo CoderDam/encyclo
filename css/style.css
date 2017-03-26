@@ -196,7 +196,7 @@ main .no-post .sad-smiley {
 .alert {
   left: 1em;
   opacity: .9;
-  position: absolute;
+  position: fixed;
   top: 1em;
   z-index: 20;
 }
@@ -209,17 +209,17 @@ main .no-post .sad-smiley {
   justify-content: center;
   align-items: center;
 
-  background: black;
-  height: 100vh;
+  /*background: black;*/
+  height: 100px;
   left: 0;
   opacity: .4;
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: 100px;
   z-index: 100;
 }
 .loading .cog span {
-  font-size: 20em;
+  font-size: 5em;
   padding: 0;
   animation: 3s linear infinite turn;
 }
