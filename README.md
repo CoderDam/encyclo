@@ -18,4 +18,4 @@
 
 
 # encyclo
-PHP-AJAX project for a webdev encyclopedia that O'Clock students and teachers can suplement
+PHP-AJAX project for a webdev encyclopedia that O'Clock students and teachers can supplement. Online here: www.garnes.one/encyclo
