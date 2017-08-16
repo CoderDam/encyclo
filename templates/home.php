@@ -6,10 +6,10 @@
             name="viewport"
             content="width=device-width, initial-scale=1"
         />
-        <title>Encyclo</title>
+        <title>Web' Dev' Pedia - l'encyclopédie des développeurs web</title>
         <!-- <link rel="stylesheet" href="css/reset.css"> -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/jquery-ui.min.css">
+        <!-- <link rel="stylesheet" href="css/jquery-ui.min.css"> -->
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -45,9 +45,32 @@
         <section id="add-block">
             <div id="add-cross"></div>
             <form id="add-form" method="POST">
-                <input id="form-title" type="text" name="title" placeholder="Nouvel élément">
-                <textarea id="form-core" name="definition" placeholder="Définition"></textarea>
-                <input id="form-tags" type="text" name="tags" placeholder="Tags (un-et-demi,deux,3.9,etc)">
+                <input
+                    id="form-title"
+                    type="text"
+                    name="title"
+                    placeholder="Nouvel élément"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Pensez à vérifier que l'entrée n'existe pas déjà ;)"
+                />
+                <textarea
+                    id="form-core"
+                    name="definition"
+                    placeholder="Définition"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="- élément de liste **gras/* __italique/_"
+                ></textarea>
+                <input
+                    id="form-tags"
+                    type="text"
+                    name="tags"
+                    placeholder="Tags (un-et-demi,deux,3.9,etc)"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="sans # et sans espace"
+                />
                 <input id="form-link1" type="text" name="link1" placeholder="Lien 1 (nom du lien,http://url.com)">
                 <input id="form-link2" type="text" name="link2" placeholder="Lien 2 (nom du lien,http://url.com)">
                 <input id="form-link3" type="text" name="link3" placeholder="Lien 3 (nom du lien,http://url.com)">
@@ -107,7 +130,7 @@
 
         <!-- JAVASCRIPT -->
         <script src="js/jquery-3.1.1.min.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
+        <!-- <script src="js/jquery-ui.min.js"></script> -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/app.js"></script>
     </body>

@@ -26,11 +26,12 @@ if (isset($_POST)) {
 
     // vérif & nettoyage tags
     if (!empty($_POST['tags'])) {
-        $tags = explode(',',$_POST['tags']);
+        $tags = formatTags($_POST['tags']);
         foreach ($tags as $key => $tag) {
             if (trim($tag) != '') {
-                $toReplace = ['_',' ',"'"];
-                $tags[$key] = substr(filter_var(str_replace($toReplace,'-',strtolower(trim($tag))),FILTER_SANITIZE_STRING),0,63);
+                $beforeReplace = ['_',' ',"'"];
+                $afterReplace = ['-','-','-'];
+                $tags[$key] = substr(filter_var(str_replace($beforeReplace,$afterReplace,strtolower(trim($tag))),FILTER_SANITIZE_STRING),0,63);
             }
             else {
                 $errors[] = 'Tag(s) invalide(s)';

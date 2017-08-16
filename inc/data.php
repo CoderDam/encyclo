@@ -106,7 +106,8 @@ function getTagsOfPost($postId) {
     $sql = "SELECT tags.*
             from tags, post_tag
             where post_tag.post_id = :postId
-            and post_tag.tag_id = tags.id";
+            and post_tag.tag_id = tags.id
+	    order by tags.name asc";
     $query = $dbConnect->prepare($sql);
     $query->bindValue(':postId',$postId,PDO::PARAM_INT);
     $query->execute();

@@ -5,6 +5,10 @@
 body {
   background-color: #31343F;
   color: #dae2f7;
+
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 /*****************************/
@@ -19,6 +23,7 @@ header, main {
   font-weight: bold;
 }
 #page-title span {
+  cursor: pointer;
   display: inline-block;
 }
 #page-title span::first-letter {
@@ -40,17 +45,36 @@ main .post-title {
   font-weight: bold;
   font-size: 2em;
 }
-main .post-title::before {
+main .post-title span:first-of-type::before {
   content: "{ ";
 }
-main .post-title::after {
+main .post-title span:first-of-type::after {
   content: " }";
+}
+main .post-title small {
+  font-size: .45em;
+}
+main .post-core {
+  word-break: break-word;
+}
+main .post-core p:first-child::first-letter {
+  text-transform: uppercase;
+}
+main .post-core > p,
+main .post-core > ul {
+  text-align: justify;
+  font-size: 1.1em;
 }
 main .post-core > p {
   margin-top: 1em;
-  text-indent: 3em;
-  text-align: justify;
-  /*font-size: 1.1em;*/
+  text-indent: 2em;
+}
+main .post-core > ul {
+  list-style: inside;
+  -webkit-padding-start: 2em;
+}
+main .post-core li {
+  margin-bottom: .7em;
 }
 
 /* LINKS */
@@ -90,7 +114,7 @@ main .no-post .sad-smiley {
   border-top-right-radius: 2em;
   max-width: 93vw;
   padding: 1em;
-  position: absolute;
+  position: fixed;
   right: .5em;
   top: .5em;
   transition: .3s; /*opacity .3s, transform .3s;*/
@@ -115,6 +139,7 @@ main .no-post .sad-smiley {
 #add-cross {
   background: #337ab7;
   border-radius: 100%;
+  cursor: pointer;
   height: 2.5em;
   position: fixed;
   right: .5em;

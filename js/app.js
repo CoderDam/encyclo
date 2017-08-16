@@ -14,6 +14,9 @@ var app = {
     $('#add-form button').on('click',app.focusModal);
     $('.confirm-form').on('submit',app.addPost);
 
+    // activation des tooltips
+    $('[data-toggle="tooltip"]').tooltip();
+
     // on écoute le clic sur les tags
     $('#main').on('click','.tag',app.displayFromTag);
 
@@ -21,7 +24,7 @@ var app = {
     $('.search-field').on('keyup',app.search);
 
     // on écoute le clic sur le titre
-    $('#page-title').on('click',app.reset);
+    $('#page-title span').on('click',app.reset);
   },
 
   addIcons: function() {
